@@ -6,14 +6,14 @@ public class Bullet : MonoBehaviour
 {
     public float speed;
 
-    private Transform player;
+    private Transform EOL;
     private Vector2 target;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Path End").transform;
+        EOL = GameObject.FindGameObjectWithTag("Path End").transform;
 
-        target = new Vector2(player.position.x, player.position.y);
+        target = new Vector2(EOL.position.x, EOL.position.y);
     }
 
     void Update()
@@ -24,19 +24,19 @@ public class Bullet : MonoBehaviour
         {
             destroyBullet();
         }
+    }
 
-        void destroyBullet()
+    void destroyBullet()
+    {
+        Destroy(gameObject);
+    }
+
+   void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            destroyBullet();
         }
 
-        void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Player"))
-            {
-                destroyBullet();
-            }
-
-        }
     }
 }
