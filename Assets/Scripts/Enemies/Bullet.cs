@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
 
-        if (playerInRange)
+        if (playerInRange())
         {
             transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
         }
