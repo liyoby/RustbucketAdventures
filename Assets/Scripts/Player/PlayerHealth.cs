@@ -8,10 +8,8 @@ public class PlayerHealth : MonoBehaviour
 {
     public int health = 100;
     public int currentHealth;
-
     //public float delayTimer;          //time before DeathSequence is called
     public float deathTimer;            //time before LevelRestart is called
-
     public bool isDead;
     public Canvas deathCanvas;          //deathsplash screen
     Scene currentLevel;
