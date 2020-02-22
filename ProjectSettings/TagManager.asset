@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Ground
+  - Path End
   layers:
   - Default
   - TransparentFX
