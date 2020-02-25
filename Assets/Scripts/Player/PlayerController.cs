@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public LayerMask groundLayer;
-    public float jumpForce = 6.0f;
-    public float speed = 5.0f;
+    public float jumpForce;
+    public float speed;
     //public float coyoteTime;
     //public float jumpDamping;
     public Vector2 currentVelocity;

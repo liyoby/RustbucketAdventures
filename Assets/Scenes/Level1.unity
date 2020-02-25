@@ -1989,7 +1989,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   jumpForce: 12
-  speed: 6
+  speed: 8
   currentVelocity: {x: 0, y: 0}
   rb: {fileID: 1246409258}
   spriteRend: {fileID: 1246409255}
