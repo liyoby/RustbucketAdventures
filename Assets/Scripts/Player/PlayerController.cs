@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     //public Animator anim;
     public Rigidbody2D rb;
     public SpriteRenderer spriteRend;
-
+    public bool isFacingRight;
     private BoxCollider2D boxCollider2D;
 
     // Start is called before the first frame update
@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRend = GetComponent<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        isFacingRight = true;
     }
 
     void FixedUpdate()
@@ -34,6 +35,21 @@ public class PlayerController : MonoBehaviour
     {
         //finds x and y axis of player
         float horizontalInput = Input.GetAxis("Horizontal");
+
+        //change sprite direction on x axis
+        if(horizontalInput > 0 && !isFacingRight)
+        {
+            //send turn as 0
+            float y = 0;
+            FlipPlayer(y);
+        }
+
+        else if (horizontalInput < 0 && isFacingRight)
+        {
+            //send turn as 180
+            float y = 180;
+            FlipPlayer(y);
+        }
 
         //controls player speed
         float velocity = horizontalInput * speed;
@@ -47,14 +63,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void FlipPlayer(float y)
+    {
+        //set bool to opposite
+        isFacingRight = !isFacingRight;
+
+        //vector3 to access player's scale in inspector
+        transform.eulerAngles = new Vector3(0, y, 0);
+      
+    }
+
     bool CheckGround()
     {
-        Vector2 position = transform.position;
         Vector2 direction = Vector2.down;
         float rotation = 0f;
-        float distance = 2.0f;
+        float distance = 1.0f;
 
-        RaycastHit2D hit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, rotation, direction, distance, groundLayer);
+        RaycastHit2D hit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 
+            rotation, direction, distance, groundLayer);
+
         if(hit.collider != null)
         {
             return true;

@@ -1401,7 +1401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622512888}
   m_LocalRotation: {x: -0, y: -0, z: 0.34201744, w: 0.9396936}
-  m_LocalPosition: {x: -4.1, y: 10.61, z: 0}
+  m_LocalPosition: {x: -13.79, y: 6.5, z: 0}
   m_LocalScale: {x: 0.62125, y: 0.29546875, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1993,6 +1993,7 @@ MonoBehaviour:
   currentVelocity: {x: 0, y: 0}
   rb: {fileID: 1246409258}
   spriteRend: {fileID: 1246409255}
+  isFacingRight: 0
 --- !u!50 &1246409258
 Rigidbody2D:
   serializedVersion: 4
