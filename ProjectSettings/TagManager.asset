@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Ground
   - Path End
+  - BreakerBox
   layers:
   - Default
   - TransparentFX

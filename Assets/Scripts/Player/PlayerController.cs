@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         //set bool to opposite
         isFacingRight = !isFacingRight;
 
-        //vector3 to access player's scale in inspector
+        //Euler angle used to ensure shoot raycast flips with player
         transform.eulerAngles = new Vector3(0, y, 0);
       
     }
