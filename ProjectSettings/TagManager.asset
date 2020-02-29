@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Path End
   - BreakerBox
+  - MagStation
+  - MetalGrates
   layers:
   - Default
   - TransparentFX

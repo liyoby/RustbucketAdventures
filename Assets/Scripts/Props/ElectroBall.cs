@@ -5,16 +5,19 @@ using UnityEngine;
 public class ElectroBall : MonoBehaviour
 {
     public float timerTilDestroy;           //lifetime of electroball
+    public float speed;                     //electroball speed
+    public Rigidbody2D rb;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        //controls movement of electroball
+        rb.velocity = transform.right * speed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //controls lifetime
         timerTilDestroy -= Time.deltaTime;
 
         if(timerTilDestroy <= 0)
@@ -30,25 +33,25 @@ public class ElectroBall : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        //if hits Enemy
-        if(other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
+            Debug.Log("Enemy hit!");
+
             //call damage enemy
-
-            //then call destory
-            DestroyElectroBall();
         }
-        //if hits breakerbox
-        else if(other.CompareTag("BreakerBox"))
+
+        else if (other.CompareTag("BreakerBox"))
         {
+            Debug.Log("Breaker box hit!");
+
             //call affect breaker box
-
-            //then call destory
-            DestroyElectroBall();
         }
-        else
+
+        //destroy on collision unless colliding with player
+        if (!other.CompareTag("Player"))
         {
             DestroyElectroBall();
         }
+        
     }
 }

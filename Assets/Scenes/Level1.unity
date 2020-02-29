@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 435306938}
   - component: {fileID: 435306937}
   - component: {fileID: 435306939}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MiniEnemyStandin
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -806,7 +806,7 @@ GameObject:
   - component: {fileID: 479341090}
   m_Layer: 10
   m_Name: MetalGrate
-  m_TagString: Untagged
+  m_TagString: MetalGrates
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1448,7 +1448,8 @@ GameObject:
   - component: {fileID: 709488445}
   - component: {fileID: 709488444}
   - component: {fileID: 709488443}
-  m_Layer: 0
+  - component: {fileID: 709488446}
+  m_Layer: 10
   m_Name: BreakerBox
   m_TagString: BreakerBox
   m_Icon: {fileID: 0}
@@ -1530,6 +1531,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &709488446
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709488442}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.4, y: 2.8}
+    newSize: {x: 1.4, y: 2.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4, y: 2.8}
+  m_EdgeRadius: 0
 --- !u!1 &785028417
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,7 +2298,7 @@ GameObject:
   - component: {fileID: 1436841034}
   m_Layer: 5
   m_Name: PlayerHUD
-  m_TagString: Untagged
+  m_TagString: BreakerBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2388,7 +2415,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1484468278}
-  - component: {fileID: 1484468279}
   m_Layer: 8
   m_Name: MagnetTip
   m_TagString: Untagged
@@ -2405,27 +2431,11 @@ Transform:
   m_GameObject: {fileID: 1484468277}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.56, y: -0.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.68172, y: 0.68172, z: 0.68172}
   m_Children: []
   m_Father: {fileID: 2069619709}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1484468279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484468277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aca929307bea7a48a04d4c7ccc4c3d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  electroBall: {fileID: 5201816198514157842, guid: 8158c976434ab4048979ead9fecb9966,
-    type: 3}
-  timerBtwShots: 0
-  shotTime: 0.5
 --- !u!1 &1523435528
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,7 +2557,7 @@ GameObject:
   - component: {fileID: 1542738229}
   m_Layer: 10
   m_Name: MetalGrate (1)
-  m_TagString: Untagged
+  m_TagString: MetalGrates
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2667,7 +2677,7 @@ GameObject:
   - component: {fileID: 1549079111}
   m_Layer: 10
   m_Name: MagStation
-  m_TagString: Untagged
+  m_TagString: MagStation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2964,7 +2974,7 @@ GameObject:
   - component: {fileID: 1948592540}
   m_Layer: 10
   m_Name: MetalGrate (2)
-  m_TagString: Untagged
+  m_TagString: MetalGrates
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3084,7 +3094,7 @@ GameObject:
   - component: {fileID: 2001169782}
   - component: {fileID: 2001169785}
   - component: {fileID: 2001169784}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LargeEnemyStandin
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3352,6 +3362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2069619709}
   - component: {fileID: 2069619711}
+  - component: {fileID: 2069619710}
   m_Layer: 8
   m_Name: MagnetStadin
   m_TagString: Untagged
@@ -3374,6 +3385,22 @@ Transform:
   m_Father: {fileID: 1246409256}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2069619710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069619708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65019ab82e18a814983d3a11d6aff50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  electroBall: {fileID: 5201816198514157842, guid: 8158c976434ab4048979ead9fecb9966,
+    type: 3}
+  magnetTip: {fileID: 1484468278}
+  shotTime: 0.4
 --- !u!212 &2069619711
 SpriteRenderer:
   m_ObjectHideFlags: 0

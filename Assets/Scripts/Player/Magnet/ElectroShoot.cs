@@ -5,19 +5,23 @@ using UnityEngine;
 public class ElectroShoot : MonoBehaviour
 {
     public GameObject electroBall;          //projectile
-    public float timerBtwShots;             //timer for shots
+    public Transform magnetTip;             //where electroball spawns
+    private float timerBtwShots;             //timer for shots
     public float shotTime;                  //timer's reset value
 
     // Start is called before the first frame update
     void Start()
     {
-        //set to 0 intially so player can immediately shoot
-        timerBtwShots = 0;
     }
+
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Electricity") && timerBtwShots <= 0)
+        Vector3 delta = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        float zRotation = Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, zRotation);
+
+        if (Input.GetButtonDown("Electricity") && timerBtwShots <= 0)
         {
             ShootElectricity();
             timerBtwShots = shotTime;
@@ -30,6 +34,6 @@ public class ElectroShoot : MonoBehaviour
 
     public void ShootElectricity()
     {
-        Instantiate(electroBall, transform.position, Quaternion.identity);
+        Instantiate(electroBall, magnetTip.position, magnetTip.rotation);
     }
 }
