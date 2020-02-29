@@ -10,17 +10,20 @@ public class ConveyorBeltMovement : MonoBehaviour
 
     public enum States
     {
-        patrol,
+        active,
         idle
     }
 
     public States state = States.idle;
 
+    Collider player;
+    BreakerBox bBox;
+
+
     void Start()
     {
 
     }
-
 
     void Update()
     {
@@ -30,21 +33,18 @@ public class ConveyorBeltMovement : MonoBehaviour
                 UpdateIdle();
                 break;
 
-            case States.patrol:
-                UpdatePatrol();
+            case States.active:
+                UpdateActive();
                 break;
         }
     }
 
-    void UpdateIdle()
+    public void UpdateIdle()
     {
-        if (Input.GetButtonDown("Jump"))    ///Change this to if player touches conveyor belt.
-        {
-            state = States.patrol;
-        }
+            state = States.active;
     }
 
-    void UpdatePatrol()
+    void UpdateActive()
     {
         transform.position = Vector3.Lerp(transform.position,
                                           nodes[nodeIndex].transform.position,
@@ -60,4 +60,14 @@ public class ConveyorBeltMovement : MonoBehaviour
             }
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            UpdateIdle();
+        }
+
+    }
+
 }

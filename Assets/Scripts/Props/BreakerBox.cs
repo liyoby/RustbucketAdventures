@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class BreakerBox : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    public bool powered = false;
+
+    public GameObject bBox;
+
+    ConveyorBeltMovement conveyorMove;
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (powered)
+        {
+            conveyorMove.UpdateIdle();
+        }
+    }
+    
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Electro Ball"))
+        {
+            powered = true;
+        }
+
     }
 }
