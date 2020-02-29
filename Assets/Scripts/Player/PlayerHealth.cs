@@ -74,4 +74,22 @@ public class PlayerHealth : MonoBehaviour
         SceneManager.LoadScene(currentLevel.name);
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+        Debug.Log(other.name);
+
+        if (other.CompareTag("Bullet"))
+        {
+            Debug.Log("Bit the bullet!");
+            TakeDamage(25);
+        }
+
+        else if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("He touched me!");
+            TakeDamage(25);
+        }
+
+    }
 }

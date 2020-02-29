@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public SpriteRenderer spriteRend;
     public bool isFacingRight;
-    private BoxCollider2D boxCollider2D;
+    public BoxCollider2D boxCollider2D;
 
     // Start is called before the first frame update
     void Start()
