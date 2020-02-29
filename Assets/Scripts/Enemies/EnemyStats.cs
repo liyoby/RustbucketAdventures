@@ -4,25 +4,48 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    public int speed = 1;       //Speed of Weapon ammo field
-    public int health = 100;    //Enemy Health field
 
-    public Transform target;    //Player is target
-    //public Transform weapon;    //Enemy weapon
+    public int health = 100;        //Enemy Health field
+    public int currentHealth;
+
+    public Transform storeDeathPos; //Hold position of death for istem spawn
+
+    public Transform target;        //Player is target
 
 
     void Update()
     {
-
+        death();
     }
 
-    void death()
+
+    void destroyEnemy()
+    {
+        Destroy(gameObject);
+    }
+
+    public void takeDamage(int damage)
+    {
+        currentHealth -= damage;
+    }
+
+    public void death()
     {
         if (health <= 0)
         {
-            //anim.setTrigger("Death");
-            //Destroy
+            destroyEnemy();
         }
+            //anim.setTrigger("Death");
+            //Call function to drop health (wrench)
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("ElectroBall"))
+        {
+            takeDamage(25);
+        }
+
     }
 
 }
