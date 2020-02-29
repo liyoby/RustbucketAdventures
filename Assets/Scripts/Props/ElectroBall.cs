@@ -33,14 +33,15 @@ public class ElectroBall : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        /*
         if (other.CompareTag("Enemy"))
         {
             Debug.Log("Enemy hit!");
 
-            //call damage enemy
         }
+        */
 
-        else if (other.CompareTag("BreakerBox"))
+        if (other.CompareTag("BreakerBox"))
         {
             Debug.Log("Breaker box hit!");
 

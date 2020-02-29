@@ -12,7 +12,10 @@ public class EnemyStats : MonoBehaviour
 
     public Transform target;        //Player is target
 
-
+    void Start()
+    {
+        currentHealth = health;
+    }
     void Update()
     {
         death();
@@ -31,7 +34,7 @@ public class EnemyStats : MonoBehaviour
 
     public void death()
     {
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             destroyEnemy();
         }
@@ -43,6 +46,7 @@ public class EnemyStats : MonoBehaviour
     {
         if (collision.CompareTag("ElectroBall"))
         {
+            //Debug.Log("I've Been Hit!");
             takeDamage(25);
         }
 
