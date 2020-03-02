@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public PlayerHealth playerHP;
+
     public LayerMask groundLayer;
+    public LayerMask enemyLayer;
+    public Vector2 currentVelocity;
+
+    public Rigidbody2D rb;
+    public SpriteRenderer spriteRend;
+    public BoxCollider2D boxCollider2D;
+    //public Animator anim;
+
     public float jumpForce;
     public float speed;
     //public float coyoteTime;
     //public float jumpDamping;
-    public Vector2 currentVelocity;
-    //public Animator anim;
-    public Rigidbody2D rb;
-    public SpriteRenderer spriteRend;
+    public float iFrameTimer;           //temporary invincibility after taking damage
+    public float iFrameReset;           //reset timer to this value
+   
     public bool isFacingRight;
-    public BoxCollider2D boxCollider2D;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +33,8 @@ public class PlayerController : MonoBehaviour
         spriteRend = GetComponent<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         isFacingRight = true;
+        iFrameTimer = 0f;
+        
     }
 
     void FixedUpdate()
@@ -55,6 +66,18 @@ public class PlayerController : MonoBehaviour
         float velocity = horizontalInput * speed;
         rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(velocity, rb.velocity.y), 
             ref currentVelocity, 0.02f);
+
+        //if player is stopped, check for bump
+        if(velocity == 0 && iFrameTimer <= 0)
+        {
+            //if bumped is true, reset timer
+            if(CheckEnemyBump())
+            {
+                iFrameTimer = iFrameReset;
+            }
+        }
+
+        iFrameTimer -= Time.deltaTime;
 
         //add coyote time later
         if (Input.GetButtonDown("Jump") && CheckGround())
@@ -88,4 +111,44 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
+
+    //Note! Collider only seems to register bullet damage
+    //alternate method had to be used for contact damage
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            Debug.Log("Bit the bullet!");
+            playerHP.TakeDamage(25);
+        }
+    }
+
+    bool CheckEnemyBump()
+    {
+        Vector2 down = Vector2.down;
+        Vector2 left = Vector2.left;
+        Vector2 right = Vector2.right;
+        float rotation = 0f;
+        float distance = 0.01f;
+
+        RaycastHit2D hitDown = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size,
+            rotation, down, distance, enemyLayer);
+
+        RaycastHit2D hitLeft = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size,
+            rotation, left, distance, enemyLayer);
+
+        RaycastHit2D hitRight = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size,
+            rotation, right, distance, enemyLayer);
+
+        //if any side is hit == true and player takes damage
+        if (hitDown.collider != null || hitLeft.collider != null || hitLeft.collider != null)
+        {
+            Debug.Log("He's touching me!");
+            playerHP.TakeDamage(25);
+           
+            return true;
+        }
+        return false;
+    }
+
 }

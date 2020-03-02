@@ -2124,14 +2124,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5a2295c22de9a4eabd9f0b075bcdff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHP: {fileID: 1246409260}
   groundLayer:
     serializedVersion: 2
     m_Bits: 1024
-  jumpForce: 12
-  speed: 8
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
   currentVelocity: {x: 0, y: 0}
   rb: {fileID: 1246409258}
   spriteRend: {fileID: 1246409255}
+  boxCollider2D: {fileID: 0}
+  jumpForce: 12
+  speed: 8
+  iFrameTimer: 0
+  iFrameReset: 2
   isFacingRight: 0
 --- !u!50 &1246409258
 Rigidbody2D:
