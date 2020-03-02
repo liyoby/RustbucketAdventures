@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            Debug.Log("Bit the bullet!");
+            //Debug.Log("Bit the bullet!");
             playerHP.TakeDamage(25);
         }
     }
@@ -141,9 +141,9 @@ public class PlayerController : MonoBehaviour
             rotation, right, distance, enemyLayer);
 
         //if any side is hit == true and player takes damage
-        if (hitDown.collider != null || hitLeft.collider != null || hitLeft.collider != null)
+        if (hitDown.collider != null || hitLeft.collider != null || hitRight.collider != null)
         {
-            Debug.Log("He's touching me!");
+            //Debug.Log("He's touching me!");
             playerHP.TakeDamage(25);
            
             return true;
