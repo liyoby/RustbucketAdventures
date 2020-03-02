@@ -116,10 +116,11 @@ public class PlayerController : MonoBehaviour
     //alternate method had to be used for contact damage
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Bullet"))
+        if (other.CompareTag("Bullet") && iFrameTimer <= 0)
         {
             //Debug.Log("Bit the bullet!");
             playerHP.TakeDamage(25);
+            iFrameTimer = iFrameReset;
         }
     }
 
