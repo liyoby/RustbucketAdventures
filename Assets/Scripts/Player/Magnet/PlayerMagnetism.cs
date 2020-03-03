@@ -7,11 +7,14 @@ public class PlayerMagnetism : MonoBehaviour
     public float maxMagnetCharge;
     public float currentMagnetCharge;
     public float lostCharge;
+    public GameObject crossHairs;
+    public SpriteRenderer spriteRend;
     // Start is called before the first frame update
     void Start()
     {
         maxMagnetCharge = 100;
         currentMagnetCharge = maxMagnetCharge;
+        spriteRend.enabled = false;
         lostCharge = 25;
     }
 
@@ -19,20 +22,21 @@ public class PlayerMagnetism : MonoBehaviour
     void Update()
     {
         //needs a get button hold?
-        //if (Input.GetButtonDown("Magnetism") && currentMagnetCharge >= 25)
-        //{
-          //  Debug.Log("Down");
-            //show crosshairs
+        if (Input.GetButton("Magnetism") && currentMagnetCharge >= 25)
+        {
+            Debug.Log("Down");
+            //show crosshairs 
+            spriteRend.enabled = true;
+        }
 
-            //check button release
-            if(Input.GetButtonUp("Magnetism"))
-            {
-                Debug.Log("Up");
-                ReduceCharge();
-            }
-            
-        //}
-       
+        //check button release
+        if (Input.GetButtonUp("Magnetism") && currentMagnetCharge >= 25)
+        {
+            Debug.Log("Up");
+            spriteRend.enabled = false;
+            ReduceCharge();
+        }
+
     }
 
     public void RefillCharge()
