@@ -625,7 +625,6 @@ Transform:
   m_Children:
   - {fileID: 204129537}
   - {fileID: 691768983}
-  - {fileID: 1624690628}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1142,10 +1141,10 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 86ce22f60d42d2a4e854adca027ba519, type: 3}
   m_Type: 3
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.721
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
@@ -2132,8 +2131,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   currentVelocity: {x: 0, y: 0}
-  rb: {fileID: 1246409258}
-  spriteRend: {fileID: 1246409255}
+  rb: {fileID: 0}
+  spriteRend: {fileID: 0}
   boxCollider2D: {fileID: 0}
   jumpForce: 12
   speed: 8
@@ -2429,9 +2428,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1246409260}
+  playerMagnetism: {fileID: 2069619712}
   healthBar: {fileID: 586695313}
   chargeBar: {fileID: 605293796}
-  magnetCharge: 100
 --- !u!1 &1484468277
 GameObject:
   m_ObjectHideFlags: 0
@@ -2808,36 +2807,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1624690627
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1624690628}
-  m_Layer: 0
-  m_Name: PathEndShort
-  m_TagString: Path End
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1624690628
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624690627}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.62, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 435306936}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1754171560
 GameObject:
@@ -3406,6 +3375,7 @@ GameObject:
   - component: {fileID: 2069619709}
   - component: {fileID: 2069619711}
   - component: {fileID: 2069619710}
+  - component: {fileID: 2069619712}
   m_Layer: 8
   m_Name: MagnetStadin
   m_TagString: Untagged
@@ -3493,3 +3463,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2069619712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069619708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b77b371896e2048a40151ce1cbccf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMagnetCharge: 0
+  currentMagnetCharge: 0
+  lostCharge: 0

@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int health = 100;
-    public int currentHealth;
+    public float health = 100;
+    public float currentHealth;
     //public float delayTimer;          //time before DeathSequence is called
     public float deathTimer;            //time before LevelRestart is called
     public bool isDead;
@@ -50,7 +50,7 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
-
+ 
     public void AddHealth(int pickup)
     {
         currentHealth += pickup;

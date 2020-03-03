@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Path End Long").transform;
+        player = GameObject.FindGameObjectWithTag("Path End").transform;
 
         target = new Vector2(player.position.x, player.position.y);
     }
