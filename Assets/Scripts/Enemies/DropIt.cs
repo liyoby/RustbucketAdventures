@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DropIt : MonoBehaviour
 {
-    public GameObject dropFab;
+    public GameObject drop;
 
     GameObject enemy;
     EnemyStats enemyHealth;
@@ -15,14 +15,9 @@ public class DropIt : MonoBehaviour
         enemyHealth = enemy.GetComponent<EnemyStats>();
     }
 
-    void Update()
+    public void dropIt()
     {
-        dropIt();
-    }
-
-    void dropIt()
-    {
-        Instantiate(dropFab, transform.position, Quaternion.identity);
+        Instantiate(drop, transform.position, Quaternion.identity);
     }
 
 

@@ -4,29 +4,34 @@ using UnityEngine;
 
 public class DropItem : MonoBehaviour
 {
-    private Transform powerUp;
-    private Transform lastPos;
+    public float speed;
+    private Transform player;
 
     private Vector2 target;
-    
-    GameObject player;
+
+    GameObject pl;
 
     PlayerHealth playerHealth;
 
+
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        pl = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
 
-        powerUp = GameObject.FindGameObjectWithTag("Enemy").transform; //where to b
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        target = new Vector2(player.position.x, player.position.y);
 
-        lastPos = powerUp;
-        target = new Vector2(lastPos.position.x, lastPos.position.y);
     }
 
     void Update()
     {
-        destroyDrop();
+        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
+        if (transform.position.x == target.x && transform.position.y == target.y)
+        {
+            destroyDrop();
+        }
     }
 
     void destroyDrop()
@@ -38,11 +43,17 @@ public class DropItem : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Health Hit");
-            playerHealth.AddHealth(15);
             destroyDrop();
+            playerHealth.AddHealth(25);
         }
 
     }
 
 }
+
+
+
+
+
+
+

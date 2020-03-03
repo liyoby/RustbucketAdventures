@@ -7,13 +7,16 @@ public class EnemyStats : MonoBehaviour
 
     public int health = 100;        //Enemy Health field
     public int currentHealth;
-
+    
     public Transform storeDeathPos; //Hold position of death for item spawn
 
     public Transform target;        //Player is target
 
+    DropIt enemyDrops;
+
     void Start()
     {
+        enemyDrops = GetComponent<DropIt>();
         currentHealth = health;
     }
 
@@ -35,8 +38,9 @@ public class EnemyStats : MonoBehaviour
 
     public void death()
     {
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
+            enemyDrops.dropIt();
             destroyEnemy();
         }
             //anim.setTrigger("Death");
