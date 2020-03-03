@@ -8,7 +8,7 @@ public class EnemyStats : MonoBehaviour
     public int health = 100;        //Enemy Health field
     public int currentHealth;
 
-    public Transform storeDeathPos; //Hold position of death for istem spawn
+    public Transform storeDeathPos; //Hold position of death for item spawn
 
     public Transform target;        //Player is target
 
@@ -16,6 +16,7 @@ public class EnemyStats : MonoBehaviour
     {
         currentHealth = health;
     }
+
     void Update()
     {
         death();
@@ -34,7 +35,7 @@ public class EnemyStats : MonoBehaviour
 
     public void death()
     {
-        if (currentHealth <= 0)
+        if (health <= 0)
         {
             destroyEnemy();
         }
@@ -46,7 +47,6 @@ public class EnemyStats : MonoBehaviour
     {
         if (collision.CompareTag("ElectroBall"))
         {
-            //Debug.Log("I've Been Hit!");
             takeDamage(25);
         }
 
