@@ -35,7 +35,7 @@ public class EnemyStats : MonoBehaviour
 
     public void death()
     {
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             destroyEnemy();
         }
