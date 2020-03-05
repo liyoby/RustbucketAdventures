@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-
     public int health = 100;        //Enemy Health field
     public int currentHealth;
-    
-    public Transform storeDeathPos; //Hold position of death for item spawn
-
-    public Transform target;        //Player is target
 
     DropIt enemyDrops;
+
 
     void Start()
     {
