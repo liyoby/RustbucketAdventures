@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     private Transform player;
     private Vector2 target;
 
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Path End").transform;

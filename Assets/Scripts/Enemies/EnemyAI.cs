@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-
     private Rigidbody2D rb;          //Enemy rigidbody
     public float speed = 1.0f;      //Set speed of chase 
     
@@ -22,7 +21,7 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-   
+     
     }
 
     void Update()
