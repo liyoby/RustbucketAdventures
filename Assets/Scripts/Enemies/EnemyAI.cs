@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyAI : MonoBehaviour
 {
     private Rigidbody2D rb;          //Enemy rigidbody
     public float speed = 1.0f;      //Set speed of chase 
     
     public bool spotPlayer = false; //spotPlayer default false 
+    public bool faceRight = true;
 
     public Transform target;        //Player is target 
     public Transform[] nodes;       //Set Position For Enemy to return to / Controls Patrol Points
     public Transform eyes,          //Assign gameObjs to these variables for manipulation
                      eyeRange;
+
 
     void Awake()
     {
@@ -21,7 +24,8 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-     
+
+        InvokeRepeating("patrol", 0f, 1f); //Method Name, Time Float, repeatRate     
     }
 
     void Update()
@@ -29,6 +33,7 @@ public class EnemyAI : MonoBehaviour
         sensePlayer();      //Function Sense Player in range
         playerAbove();      //Check if player landed on spikes on enemy head
         chase();            //Chase player when sensePlayer is true
+
     }
 
     public bool sensePlayer()
@@ -62,6 +67,25 @@ public class EnemyAI : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
     }
+
+    //Look back and forth when player not spotted
+    void patrol()
+    {
+
+        faceRight = !faceRight;
+
+        if (faceRight == true)
+        {
+            transform.eulerAngles = new Vector2(0, 0);
+        }
+
+        else if (spotPlayer == false)
+        {
+            transform.eulerAngles = new Vector2(0, 180);
+        }
+
+    }
+
 
 
 }

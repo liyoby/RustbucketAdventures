@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Path End").transform;
+        player = GameObject.FindGameObjectWithTag("Path End Long").transform;
 
         target = new Vector2(player.position.x, player.position.y);
     }
@@ -25,7 +25,6 @@ public class Bullet : MonoBehaviour
         {
             destroyBullet();
         }
-
     }
     
     void destroyBullet()
