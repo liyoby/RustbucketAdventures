@@ -17,7 +17,7 @@ public class DropItem : MonoBehaviour
     void Start()
     {
         pl = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = player.GetComponent<PlayerHealth>();
+        playerHealth = pl.GetComponent<PlayerHealth>();
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
         target = new Vector2(player.position.x, player.position.y);
