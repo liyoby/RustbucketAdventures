@@ -25,7 +25,7 @@ public class StartMenu : MonoBehaviour
 
     public void StartButtonPressed()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("ProtoType");
     }
 
     public void QuitButtonPressed()
