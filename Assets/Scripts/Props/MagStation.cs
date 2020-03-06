@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class MagStation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public PlayerMagnetism playerMag;
 
-    // Update is called once per frame
-    void Update()
+    void OnEnterTrigger2D()
     {
-        
+        playerMag.currentMagnetCharge = playerMag.maxMagnetCharge;
     }
 }

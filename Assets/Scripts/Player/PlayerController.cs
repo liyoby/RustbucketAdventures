@@ -77,7 +77,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        iFrameTimer -= Time.deltaTime;
+        if (iFrameTimer >= -1) 
+        {
+            iFrameTimer -= Time.deltaTime;
+        }
 
         //add coyote time later
         if (Input.GetButtonDown("Jump") && CheckGround())

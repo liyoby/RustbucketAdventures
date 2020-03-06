@@ -24,7 +24,7 @@ public class PlayerMagnetism : MonoBehaviour
         //needs a get button hold?
         if (Input.GetButton("Magnetism") && currentMagnetCharge >= 25)
         {
-            Debug.Log("Down");
+            //Debug.Log("Down");
             //show crosshairs 
             spriteRend.enabled = true;
         }
@@ -32,7 +32,7 @@ public class PlayerMagnetism : MonoBehaviour
         //check button release
         if (Input.GetButtonUp("Magnetism") && currentMagnetCharge >= 25)
         {
-            Debug.Log("Up");
+            //Debug.Log("Up");
             spriteRend.enabled = false;
             ReduceCharge();
         }
