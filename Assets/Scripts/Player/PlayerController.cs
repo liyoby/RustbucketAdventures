@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float speed;
     //public float coyoteTime;
-    //public float jumpDamping;
     public float iFrameTimer;           //temporary invincibility after taking damage
     public float iFrameReset;           //reset timer to this value
    
