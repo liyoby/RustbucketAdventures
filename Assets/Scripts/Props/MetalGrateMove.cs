@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Attach to Metal Grates that are going to move
+//Motion currently is back and forth, but still can be used for trickier aiming purposes
+//Needs two nodes per Metal Grate
+//Place at ends of conveyor belts a little above the surface
+
 public class MetalGrateMove : MonoBehaviour
 {
     public List<Transform> nodes;

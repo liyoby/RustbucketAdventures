@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Attach to Breaker Box Object
+
 public class BreakerBox : MonoBehaviour
 {
 
