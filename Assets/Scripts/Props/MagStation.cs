@@ -8,6 +8,6 @@ public class MagStation : MonoBehaviour
 
     void OnEnterTrigger2D()
     {
-        playerMag.currentMagnetCharge = playerMag.maxMagnetCharge;
+        playerMag.RefillCharge();
     }
 }

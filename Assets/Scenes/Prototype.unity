@@ -61038,6 +61038,11 @@ PrefabInstance:
       propertyPath: nodes.Array.data[1]
       value: 
       objectReference: {fileID: 852834255}
+    - target: {fileID: 486221333719328880, guid: 6d699b3f96ed73546a37d6aa23ce964c,
+        type: 3}
+      propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 729597192633386354, guid: 6d699b3f96ed73546a37d6aa23ce964c,
         type: 3}
       propertyPath: m_LocalPosition.x

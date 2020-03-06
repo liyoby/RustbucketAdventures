@@ -23,7 +23,8 @@ public class MetalGrateMove : MonoBehaviour
 
     void Start()
     {
-
+        //Trying to start in idle
+        state = States.idle;
     }
 
 
