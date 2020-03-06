@@ -7,16 +7,15 @@ public class BreakerBox : MonoBehaviour
 
     public bool powered = false;
 
-    public GameObject bBox;
 
-    ConveyorBeltMovement conveyorMove;
+    MetalGrateMove grateMove;
 
     // Update is called once per frame
     void Update()
     {
         if (powered)
         {
-            conveyorMove.UpdateIdle();
+            grateMove.UpdateIdle();
         }
     }
     
