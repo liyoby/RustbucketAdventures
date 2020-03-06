@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 729597192633386354}
   - component: {fileID: 222138447543422091}
   - component: {fileID: 4401300159692290287}
+  - component: {fileID: 486221333719328880}
   m_Layer: 0
   m_Name: MetalGrate
   m_TagString: Untagged
@@ -107,3 +108,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.33, y: 6.11}
   m_EdgeRadius: 0
+--- !u!114 &486221333719328880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026561561212253151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329ec47b54d6aad459a418a0e9d53a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  nodeIndex: 0
+  speed: 1
+  state: 1
