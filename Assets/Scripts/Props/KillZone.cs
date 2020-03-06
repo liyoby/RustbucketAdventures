@@ -9,7 +9,7 @@ public class KillZone : MonoBehaviour
     void OnTriggerEnter2d(Collider2D other)
     {
        
-            if(other.CompareTag("Player"))
+            if(other.gameObject.tag == "Player")
             {
                 PlayerHp.currentHealth = 0;
             }

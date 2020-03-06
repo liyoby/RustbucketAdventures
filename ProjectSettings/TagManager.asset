@@ -12,6 +12,10 @@ TagManager:
   - MetalGrates
   - ElectroBall
   - Bullet
+  - ConveyorBelt
+  - Background
+  - GM
+  - KillZone
   layers:
   - Default
   - TransparentFX
@@ -24,7 +28,7 @@ TagManager:
   - Player
   - Enemy
   - Ground
-  - 
+  - KillZone
   - 
   - 
   - 

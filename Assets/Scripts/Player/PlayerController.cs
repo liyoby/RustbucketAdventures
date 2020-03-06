@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public SpriteRenderer spriteRend;
     public BoxCollider2D boxCollider2D;
+    public PlayerMagnetism plMag;
     //public Animator anim;
 
     public float jumpForce;
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
             ref currentVelocity, 0.02f);
 
         //if player is stopped, check for bump
-        if(velocity == 0 && iFrameTimer <= 0)
+        if(velocity <= 2 && iFrameTimer <= 0)
         {
             //if bumped is true, reset timer
             if(CheckEnemyBump())
@@ -123,6 +124,16 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("Bit the bullet!");
             playerHP.TakeDamage(25);
             iFrameTimer = iFrameReset;
+        }
+
+        if (other.CompareTag("KillZone"))
+        {
+            playerHP.TakeDamage(100);
+        }
+
+        if (other.CompareTag("MagStation"))
+        {
+            plMag.currentMagnetCharge = plMag.maxMagnetCharge;
         }
     }
 
