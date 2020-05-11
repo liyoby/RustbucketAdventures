@@ -8,10 +8,12 @@ public class ElectroShoot : MonoBehaviour
     public Transform magnetTip;             //where electroball spawns
     private float timerBtwShots;             //timer for shots
     public float shotTime;                  //timer's reset value
+    public PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
     {
+       
     }
 
     // Update is called once per frame
@@ -23,8 +25,10 @@ public class ElectroShoot : MonoBehaviour
 
         if (Input.GetButtonDown("Electricity") && timerBtwShots <= 0)
         {
+            playerController.AnimateAim();
             ShootElectricity();
             timerBtwShots = shotTime;
+            playerController.AnimateShoot();
         }
         else
         {

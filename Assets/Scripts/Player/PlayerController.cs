@@ -14,14 +14,16 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRend;
     public BoxCollider2D boxCollider2D;
     public PlayerMagnetism plMag;
-    //public Animator anim;
+    public Animator anim;
 
     public float jumpForce;
     public float speed;
-    //public float coyoteTime;
+    public float coyoteTimer;           //allows delayed jump from platform
+    public float coyoteReset;
+    public float jumpTimer;             //time since jump
+    public float jumpTimerReset;
     public float iFrameTimer;           //temporary invincibility after taking damage
     public float iFrameReset;           //reset timer to this value
-   
     public bool isFacingRight;
    
 
@@ -32,8 +34,11 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRend = GetComponent<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        anim = gameObject.GetComponent<Animator>();
         isFacingRight = true;
         iFrameTimer = 0f;
+        jumpTimer = 0f;
+        coyoteTimer = 0f;
         
     }
 
@@ -48,14 +53,14 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
 
         //change sprite direction on x axis
-        if(horizontalInput > 0 && !isFacingRight)
+        if(horizontalInput < 0 && !isFacingRight)
         {
             //send turn as 0
             float y = 0;
             FlipPlayer(y);
         }
 
-        else if (horizontalInput < 0 && isFacingRight)
+        else if (horizontalInput > 0 && isFacingRight)
         {
             //send turn as 180
             float y = 180;
@@ -66,6 +71,15 @@ public class PlayerController : MonoBehaviour
         float velocity = horizontalInput * speed;
         rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(velocity, rb.velocity.y), 
             ref currentVelocity, 0.02f);
+
+        if(horizontalInput != 0 && CheckGround() == true)
+        {
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
+        }
 
         //if player is stopped, check for bump
         if(velocity <= 2 && iFrameTimer <= 0)
@@ -82,11 +96,53 @@ public class PlayerController : MonoBehaviour
             iFrameTimer -= Time.deltaTime;
         }
 
-        //add coyote time later
-        if (Input.GetButtonDown("Jump") && CheckGround())
+        coyoteTimer -= Time.deltaTime;
+        if (CheckGround())
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            coyoteTimer = coyoteReset;
         }
+
+        jumpTimer -= Time.deltaTime;
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumpTimer = jumpTimerReset;
+           
+            //currently causes collision bug
+            //anim.SetTrigger("Crouch");
+        }
+
+        
+        if (jumpTimer > 0 && coyoteTimer > 0)
+        {
+            
+            coyoteTimer = 0;
+            jumpTimer = 0;
+
+            //anim.SetTrigger("Jump");
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+            if(CheckGround() == true)
+            {
+                //currently causes collision bug
+                //anim.SetTrigger("Land");
+                //Debug.Log("Landed");
+            }
+        }
+       
+    }
+
+    public void AnimateAim()
+    {
+        anim.SetTrigger("Aim");
+    }
+
+    public void AnimateShoot()
+    {
+        anim.SetTrigger("Shoot");
+    }
+    public void AnimateDeath()
+    {
+        anim.SetTrigger("Death");
     }
 
     void FlipPlayer(float y)

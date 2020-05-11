@@ -8,18 +8,19 @@ public class PlayerHealth : MonoBehaviour
 {
     public float health = 100;
     public float currentHealth;
-    //public float delayTimer;          //time before DeathSequence is called
+    public float delayTimer;          //time before DeathSequence is called
     public float deathTimer;            //time before LevelRestart is called
     public bool isDead;
     public Canvas deathCanvas;          //deathsplash screen
     Scene currentLevel;
+    public PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
     {
         isDead = false;
-        // delayTimer = 2f;
-        deathTimer = 5f; //+ delayTimer;
+        delayTimer = 2.25f;
+        deathTimer = 5f + delayTimer;
         currentHealth = health;
         deathCanvas.enabled = false;
         currentLevel = SceneManager.GetActiveScene();
@@ -31,11 +32,19 @@ public class PlayerHealth : MonoBehaviour
         //checks if player is dead
         if (currentHealth <= 0)
         {
-            //delayTimer -= Time.deltaTime;
+            
+
+           
             //call death sequence once and after a delay
-            if (!isDead)// && delayTimer <= 0)
+            if (!isDead) 
             {
-                DeathSequence();
+                delayTimer -= Time.deltaTime;
+
+                playerController.AnimateDeath();
+                if (delayTimer <= 0)
+                {
+                    DeathSequence();
+                }
             }
 
             //countdown for time viewing splashscreen

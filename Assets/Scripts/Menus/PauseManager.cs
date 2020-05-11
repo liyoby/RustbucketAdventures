@@ -8,6 +8,7 @@ using UnityEditor;
 
 public class PauseManager : MonoBehaviour
 {
+    public ControlsMenu CMenu;
     public Canvas pauseCanvas;
     public static bool isPaused = false;
 
@@ -43,6 +44,12 @@ public class PauseManager : MonoBehaviour
         pauseCanvas.enabled = false;
         Time.timeScale = 1f;
         isPaused = false;
+    }
+
+    public void ControlsButtonPressed()
+    {
+        CMenu.controlsCanvas.enabled = true;
+        pauseCanvas.enabled = false;
     }
     public void QuitButtonPressed()
     {

@@ -10,6 +10,8 @@ using UnityEditor;
 public class StartMenu : MonoBehaviour
 {
     public Canvas titleCanvas;
+    public InstructionMenu IMenu;
+    public StoryMenu StoryMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,18 @@ public class StartMenu : MonoBehaviour
         SceneManager.LoadScene("ProtoType");
     }
 
+    public void InstructionButtonPressed()
+    {
+        IMenu.instructionCanvas.enabled = true;
+        titleCanvas.enabled = false;
+    }
+
+    public void StoryButtonPressed()
+    {
+        StoryMenu.storyCanvas.enabled = true;
+        titleCanvas.enabled = false;
+    }
+
     public void QuitButtonPressed()
     {
         #if UNITY_EDITOR
@@ -36,4 +50,5 @@ public class StartMenu : MonoBehaviour
 		       Application.Quit();
         #endif
     }
+
 }

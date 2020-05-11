@@ -9,9 +9,12 @@ public class PlayerMagnetism : MonoBehaviour
     public float lostCharge;
     public GameObject crossHairs;
     public SpriteRenderer spriteRend;
+    public PlayerController playerController;
+   
     // Start is called before the first frame update
     void Start()
     {
+        
         maxMagnetCharge = 100;
         currentMagnetCharge = maxMagnetCharge;
         spriteRend.enabled = false;
@@ -27,6 +30,7 @@ public class PlayerMagnetism : MonoBehaviour
             //Debug.Log("Down");
             //show crosshairs 
             spriteRend.enabled = true;
+            playerController.AnimateAim();
         }
 
         //check button release
@@ -35,6 +39,7 @@ public class PlayerMagnetism : MonoBehaviour
             //Debug.Log("Up");
             spriteRend.enabled = false;
             ReduceCharge();
+            playerController.AnimateShoot();
         }
 
     }
