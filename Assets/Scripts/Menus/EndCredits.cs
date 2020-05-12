@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -11,17 +12,22 @@ public class EndCredits : MonoBehaviour
 {
     public Canvas endCanvas;
     public float splashTimer;
+    public VideoPlayer videoPlayer;
+    double videoLength;
+    double currentLength;
 
     // Start is called before the first frame update
     void Start()
     {
-        endCanvas = GetComponent<Canvas>();
-        splashTimer = 5f;
+        //GameObject camera = GameObject.Find("Main Camera");
+        splashTimer = 3.5f;
+        videoLength = gameObject.GetComponent<VideoPlayer>().clip.length;
     }
 
     // Update is called once per frame
     void Update()
     {
+        currentLength = gameObject.GetComponent<VideoPlayer>().time;
         splashTimer -= Time.deltaTime;
 
         if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Escape))
@@ -31,7 +37,13 @@ public class EndCredits : MonoBehaviour
 
         else if (splashTimer <= 0)
         {
-            //after refinement period will call StartEndCredits instead
+            StartEndCredits();
+            endCanvas.enabled = false;
+            
+        }
+
+        if (currentLength >= videoLength)
+        {
             NextButtonPressed();
         }
     }
@@ -45,6 +57,8 @@ public class EndCredits : MonoBehaviour
     public void StartEndCredits()
     {
         //start mp4 video
+        videoPlayer.Play();
+        
     }
 
 }
