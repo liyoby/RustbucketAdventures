@@ -6,14 +6,17 @@ public class EnemyStats : MonoBehaviour
 {
     public int health = 100;        //Enemy Health field
     public int currentHealth;
-
+    public Animator anim;
     DropIt enemyDrops;
+    public float delayTimer;
 
 
     void Start()
     {
+        anim = gameObject.GetComponent<Animator>();
         enemyDrops = GetComponent<DropIt>();
         currentHealth = health;
+        delayTimer = 2.5f;
     }
 
     void Update()
@@ -34,13 +37,26 @@ public class EnemyStats : MonoBehaviour
 
     public void death()
     {
+        
         if (currentHealth <= 0)
         {
-            enemyDrops.dropIt();
-            destroyEnemy();
+            delayTimer -= Time.deltaTime;
+            AnimateDeath();
+
+            if (delayTimer <= 0)
+            {
+                enemyDrops.dropIt();
+                destroyEnemy();
+            }
         }
-            //anim.setTrigger("Death");
+            
             //Call function to drop health (wrench)
+    }
+
+    public void AnimateDeath()
+    {
+        anim.SetTrigger("Dead");
+       
     }
 
     void OnTriggerEnter2D(Collider2D collision)

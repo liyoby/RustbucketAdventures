@@ -11,6 +11,7 @@ public class ElectroBall : MonoBehaviour
     void Start()
     {
         //controls movement of electroball
+        speed = 20;
         rb.velocity = transform.right * speed;
     }
 

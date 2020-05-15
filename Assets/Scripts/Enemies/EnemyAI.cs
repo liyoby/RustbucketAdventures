@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+    public Animator anim;
     private Rigidbody2D rb;          //Enemy rigidbody
     public float speed = 1.0f;      //Set speed of chase 
     
@@ -24,7 +25,8 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        anim = gameObject.GetComponent<Animator>();
         InvokeRepeating("patrol", 0f, 1f); //Method Name, Time Float, repeatRate     
     }
 
@@ -63,6 +65,7 @@ public class EnemyAI : MonoBehaviour
         //The moment the enemy can "see" the player, trigger enemy chase
         if(spotPlayer == true)
         {
+            anim.SetTrigger("InRange");
             //Chase the player
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }

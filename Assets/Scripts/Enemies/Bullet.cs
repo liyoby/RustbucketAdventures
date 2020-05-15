@@ -15,6 +15,8 @@ public class Bullet : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Path End").transform;
 
         target = new Vector2(player.position.x, player.position.y);
+
+        speed = 10;
     }
 
     void Update()

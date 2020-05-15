@@ -33,14 +33,13 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             
-
-           
             //call death sequence once and after a delay
             if (!isDead) 
             {
                 delayTimer -= Time.deltaTime;
 
                 playerController.AnimateDeath();
+
                 if (delayTimer <= 0)
                 {
                     DeathSequence();
