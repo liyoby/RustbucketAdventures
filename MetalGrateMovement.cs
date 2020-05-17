@@ -8,7 +8,11 @@ public class MetalGrateMovement : MonoBehaviour
     public float timeTweenShots;
     public float startTime;
 
-    string eBall = "Electro Ball";
+    public string BreakBoxTag;
+
+    private Transform eBall;
+    private Transform brBox;
+    private Vector2 target;
 
     public GameObject grate;
     public GameObject bBox;
@@ -16,12 +20,20 @@ public class MetalGrateMovement : MonoBehaviour
 
     void Start()
     {
+        eBall = GameObject.FindGameObjectWithTag("Electro Ball").transform;
+        brBox = GameObject.FindGameObjectWithTag(BreakBoxTag).transform;
+
+        target = new Vector2(eBall.position.x, eBall.position.y);
+
         timeTweenShots = startTime; //At start, set start time to count down from.
     }
 
     void Update()
     {
-        moveGrate();
+        if (brBox.position.x == target.x && brBox.position.y == target.y)
+        {
+            moveGrate();
+        }
     }
 
     public void moveGrate()
@@ -38,11 +50,5 @@ public class MetalGrateMovement : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2d(Collider2D bBox)
-    {
-        if (bBox.CompareTag(eBall))
-        {
-            moveGrate();
-        }
-    }
+
 }
