@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 869223415311312533}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.79, y: -1.71, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.65172, y: 0.65172, z: 0.65172}
   m_Children:
   - {fileID: 869223415541506594}
   - {fileID: 869223416129710516}
@@ -184,6 +184,7 @@ MonoBehaviour:
   health: 100
   currentHealth: 0
   anim: {fileID: 0}
+  delayTimer: 0
 --- !u!95 &1988494875959798508
 Animator:
   serializedVersion: 3

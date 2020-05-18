@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     public float jumpForce;
     public float speed;
+    public float flySpeed;
     public float coyoteTimer;           //allows delayed jump from platform
     public float coyoteReset;
     public float jumpTimer;             //time since jump
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
         iFrameTimer = 0f;
         jumpTimer = 0f;
         coyoteTimer = 0f;
+        flySpeed = 50f;
         
     }
 
@@ -131,6 +133,21 @@ public class PlayerController : MonoBehaviour
        
     }
 
+    public void BounceUp()
+    {
+
+        transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2f)
+                       , ForceMode2D.Impulse);
+
+        
+    }
+
+    public void PlayerStick()
+    {
+
+    }
+
+
     public void AnimateAim()
     {
         anim.SetTrigger("Aim");
@@ -191,8 +208,19 @@ public class PlayerController : MonoBehaviour
         {
             plMag.currentMagnetCharge = plMag.maxMagnetCharge;
         }
+
+        if(other.CompareTag("MetalGrates"))
+        {
+            PlayerMagnetism.isColliding = true;
+        }
+
+        else
+        {
+            PlayerMagnetism.isColliding = true;
+        }
     }
 
+    
     bool CheckEnemyBump()
     {
         Vector2 down = Vector2.down;
