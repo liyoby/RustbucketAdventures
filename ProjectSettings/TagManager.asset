@@ -17,6 +17,10 @@ TagManager:
   - GM
   - KillZone
   - LittleEnemy
+  - Path
+  - bBox1
+  - bBox2
+  - bBox3
   layers:
   - Default
   - TransparentFX

@@ -9,24 +9,18 @@ public class BreakerBox : MonoBehaviour
 
     public bool powered = false;
 
-
-    MetalGrateMove grateMove;
-
     // Update is called once per frame
     void Update()
     {
-        if (powered)
-        {
-            grateMove.UpdateIdle();
-        }
+        
     }
     
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Electro Ball"))
+        if (collision.CompareTag("ElectroBall"))
         {
-            powered = true;
+            MetalGrateMovement.isPowered = true;
         }
 
     }

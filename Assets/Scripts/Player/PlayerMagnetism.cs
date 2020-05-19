@@ -79,8 +79,6 @@ public class PlayerMagnetism : MonoBehaviour
         {
             //Debug.Log("Up");
             spriteRend.enabled = false;
-            //playerController.LiftOff(crossHairs.transform);
-
             //playerController.AnimateShoot();
 
             var hit = Physics2D.Raycast(playerPosition, aimDirection * Vector2.right, maxMagDistance, magnetLayerMask);

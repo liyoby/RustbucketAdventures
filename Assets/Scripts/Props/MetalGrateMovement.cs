@@ -9,22 +9,22 @@ public class MetalGrateMovement : MonoBehaviour
     public float startTime;
 
     public string BreakBoxTag;
-    string eBall = "Electro Ball";
 
-    public bool powered;
+    public static bool isPowered;
 
     public GameObject grate;
     GameObject bBox;
 
     void Start()
     {
+        isPowered = false;
         bBox = GameObject.FindGameObjectWithTag(BreakBoxTag);
         timeTweenGrates = startTime; //At start, set start time to count down from.
     }
 
     void Update()
     {
-        if (powered == true)
+        if (isPowered == true)
         {
             moveGrate();
         }
@@ -41,18 +41,6 @@ public class MetalGrateMovement : MonoBehaviour
         {
             //Ticks down time between shots.  Enemy shoots on 0.
             timeTweenGrates -= Time.deltaTime;
-        }
-    }
-
-    void OnTriggerEnter2d(Collider2D bBox)
-    {
-        if (bBox.CompareTag(eBall))
-        {
-            powered = true;
-        }
-        else
-        {
-            powered = false;
         }
     }
 }

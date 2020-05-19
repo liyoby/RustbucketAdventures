@@ -216,7 +216,7 @@ public class PlayerController : MonoBehaviour
 
         else
         {
-            PlayerMagnetism.isColliding = true;
+            PlayerMagnetism.isColliding = false;
         }
     }
 
