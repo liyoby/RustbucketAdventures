@@ -4,15 +4,44 @@ using UnityEngine;
 
 public class MetalGrate : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public float speed;
+
+    public string pathTag;
+
+    private Transform grateDestination;
+    private Vector2 target;
+
     void Start()
     {
-        
+        grateDestination = GameObject.FindGameObjectWithTag(pathTag).transform;
+
+        target = new Vector2(grateDestination.position.x, grateDestination.position.y);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        
+
+        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
+        if (transform.position.x == target.x && transform.position.y == target.y)
+        {
+            destroyGrate();
+        }
+    }
+
+    void destroyGrate()
+    {
+        Destroy(gameObject);
+    }
+
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            destroyGrate();
+        }
+
     }
 }
