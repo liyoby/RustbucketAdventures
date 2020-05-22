@@ -11,6 +11,7 @@ public class LittleEnemy : MonoBehaviour
     public int health = 100;        //Enemy Health field
     public int currentHealth;
     public Animator anim;
+    EnemyAI enemy;
     DropIt enemyDrops;
     public float delayTimer;
     public bool hasPlayed;              //if death sound has played
@@ -18,6 +19,7 @@ public class LittleEnemy : MonoBehaviour
 
     void Start()
     {
+        enemy = GetComponent<EnemyAI>();
         audioManager = FindObjectOfType<AudioManager>();
         anim = gameObject.GetComponent<Animator>();
         enemyDrops = GetComponent<DropIt>();
@@ -47,6 +49,7 @@ public class LittleEnemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            enemy.stopPatrol();
             delayTimer -= Time.deltaTime;
             AnimateDeath();
 
