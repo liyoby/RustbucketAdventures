@@ -17,9 +17,11 @@ public class EnemyAI : MonoBehaviour
     public Transform eyes,          //Assign gameObjs to these variables for manipulation
                      eyeRange;
 
+    EnemyStats enemy;
 
     void Awake()
     {
+        enemy = GetComponent<EnemyStats>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -27,7 +29,11 @@ public class EnemyAI : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         anim = gameObject.GetComponent<Animator>();
-        InvokeRepeating("patrol", 0f, 1f); //Method Name, Time Float, repeatRate     
+
+        if (enemy.health > 0)
+        {
+            InvokeRepeating("patrol", 0f, 1f); //Method Name, Time Float, repeatRate     
+        }
     }
 
     void Update()
