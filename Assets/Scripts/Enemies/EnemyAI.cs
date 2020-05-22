@@ -17,11 +17,9 @@ public class EnemyAI : MonoBehaviour
     public Transform eyes,          //Assign gameObjs to these variables for manipulation
                      eyeRange;
 
-    EnemyStats enemy;
 
     void Awake()
     {
-        enemy = GameObject.FindObjectOfType<EnemyStats>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -31,7 +29,6 @@ public class EnemyAI : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
 
         InvokeRepeating("patrol", 0f, 1f); //Method Name, Time Float, repeatRate     
-        
 
     }
 
@@ -40,10 +37,7 @@ public class EnemyAI : MonoBehaviour
         sensePlayer();      //Function Sense Player in range
         playerAbove();      //Check if player landed on spikes on enemy head
         chase();            //Chase player when sensePlayer is true
-        if (enemy.health <= 0)
-        {
-            stopPatrol();
-        }
+
     }
 
     public bool sensePlayer()
@@ -82,7 +76,7 @@ public class EnemyAI : MonoBehaviour
     //Look back and forth when player not spotted
     void patrol()
     {
-        if (spotPlayer == false)
+        if (spotPlayer == false)    //Only look back and forth when player is not in range
         { 
         faceRight = !faceRight;
 
