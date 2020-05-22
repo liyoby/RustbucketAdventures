@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRend;
     public BoxCollider2D boxCollider2D;
     public PlayerMagnetism plMag;
+    public AudioManager audioManager;
     public Animator anim;
 
     public float jumpForce;
@@ -26,12 +27,13 @@ public class PlayerController : MonoBehaviour
     public float iFrameTimer;           //temporary invincibility after taking damage
     public float iFrameReset;           //reset timer to this value
     public bool isFacingRight;
+    public bool isRunning;
    
 
     // Start is called before the first frame update
     void Start()
     {
-        //gives player physical components like gravity
+        audioManager = FindObjectOfType<AudioManager>();
         rb = GetComponent<Rigidbody2D>();
         spriteRend = GetComponent<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
@@ -76,11 +78,22 @@ public class PlayerController : MonoBehaviour
 
         if(horizontalInput != 0 && CheckGround() == true)
         {
+            isRunning = true;
             anim.SetBool("isRunning", true);
         }
         else
         {
+            isRunning = false;
             anim.SetBool("isRunning", false);
+        }
+
+        if(isRunning == true)
+        {
+            audioManager.PlaySound("PlayerSteps");
+        }
+        else
+        {
+            audioManager.StopSound("PlayerSteps");
         }
 
         //if player is stopped, check for bump

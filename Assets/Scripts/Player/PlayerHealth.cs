@@ -11,9 +11,11 @@ public class PlayerHealth : MonoBehaviour
     public float delayTimer;          //time before DeathSequence is called
     public float deathTimer;            //time before LevelRestart is called
     public bool isDead;
+    public bool hasPlayed;              //if death sound has played
     public Canvas deathCanvas;          //deathsplash screen
     Scene currentLevel;
     public PlayerController playerController;
+    public AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,8 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = health;
         deathCanvas.enabled = false;
         currentLevel = SceneManager.GetActiveScene();
+        audioManager = FindObjectOfType<AudioManager>();
+        hasPlayed = false;
     }
 
     // Update is called once per frame
@@ -32,6 +36,7 @@ public class PlayerHealth : MonoBehaviour
         //checks if player is dead
         if (currentHealth <= 0)
         {
+            audioManager.StopSound("Theme");
             
             //call death sequence once and after a delay
             if (!isDead) 
@@ -39,6 +44,12 @@ public class PlayerHealth : MonoBehaviour
                 delayTimer -= Time.deltaTime;
 
                 playerController.AnimateDeath();
+
+                if(!hasPlayed)
+                {
+                    audioManager.PlaySound("PlayerDeath");
+                    hasPlayed = true;
+                }
 
                 if (delayTimer <= 0)
                 {
@@ -62,6 +73,7 @@ public class PlayerHealth : MonoBehaviour
     public void AddHealth(int pickup)
     {
         currentHealth += pickup;
+        audioManager.PlaySound("PlayerHeal");
     }
 
     public void TakeDamage(int damage)
@@ -80,6 +92,7 @@ public class PlayerHealth : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(currentLevel.name);
+        FindObjectOfType<AudioManager>().PlaySound("Theme");
     }
 
 }

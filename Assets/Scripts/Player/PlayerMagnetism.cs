@@ -24,6 +24,7 @@ public class PlayerMagnetism : MonoBehaviour
     public GameObject crossHairs;
     public SpriteRenderer spriteRend;
     public PlayerController playerController;
+    public AudioManager audioManager;
 
     public GameObject electroBall;          //projectile
     public Transform magnetTip;             //where electroball spawns
@@ -33,6 +34,7 @@ public class PlayerMagnetism : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         liftSpeed = 20f;
         joint.enabled = false;
         maxMagDistance = 30f;
@@ -51,7 +53,7 @@ public class PlayerMagnetism : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, zRotation);
         var aimDirection = transform.rotation;
 
-        if (Input.GetButtonDown("Electricity") && timerBtwShots <= 0)
+        if (Input.GetButtonDown("Electricity") && timerBtwShots <= 0 && PauseManager.isPaused == false)
         {
             playerController.AnimateAim();
             ShootElectricity();
@@ -64,7 +66,7 @@ public class PlayerMagnetism : MonoBehaviour
         }
 
         playerPosition = transform.position;
-        if (Input.GetButton("Magnetism") && currentMagnetCharge >= 25)
+        if (Input.GetButton("Magnetism") && currentMagnetCharge >= 25 && PauseManager.isPaused == false)
         {
             //Debug.Log("Down");
             //show crosshairs 
@@ -184,11 +186,13 @@ public class PlayerMagnetism : MonoBehaviour
 
     public void ShootElectricity()
     {
+        audioManager.PlaySound("PlayerShoot");
         Instantiate(electroBall, magnetTip.position, magnetTip.rotation);
     }
 
     public void RefillCharge()
     {
+        //sound currently not working
         currentMagnetCharge = maxMagnetCharge;
     }
 

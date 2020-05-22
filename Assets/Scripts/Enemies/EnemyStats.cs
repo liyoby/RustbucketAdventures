@@ -9,10 +9,13 @@ public class EnemyStats : MonoBehaviour
     public Animator anim;
     DropIt enemyDrops;
     public float delayTimer;
+    public bool hasPlayed;              //if death sound has played
+    public AudioManager audioManager;
 
 
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         anim = gameObject.GetComponent<Animator>();
         enemyDrops = GetComponent<DropIt>();
         currentHealth = health;
@@ -42,6 +45,12 @@ public class EnemyStats : MonoBehaviour
         {
             delayTimer -= Time.deltaTime;
             AnimateDeath();
+
+            if (!hasPlayed)
+            {
+                audioManager.PlaySound("EnemyDeath");
+                hasPlayed = true;
+            }
 
             if (delayTimer <= 0)
             {

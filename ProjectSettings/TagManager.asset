@@ -21,6 +21,7 @@ TagManager:
   - bBox1
   - bBox2
   - bBox3
+  - HealthPickup
   layers:
   - Default
   - TransparentFX

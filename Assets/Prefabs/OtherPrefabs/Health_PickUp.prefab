@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1628306195393147096}
   m_Layer: 0
   m_Name: Health_PickUp
-  m_TagString: Untagged
+  m_TagString: HealthPickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 895528545991874679}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.7216845, y: 1.9953, z: 0}
-  m_LocalScale: {x: 0.21510902, y: 0.21510902, z: 0.21510902}
+  m_LocalRotation: {x: -0, y: -0, z: -0.21065012, w: 0.97756153}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -24.321001}
 --- !u!212 &6178279873403125999
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -43,7 +43,7 @@ public class ElectroBall : MonoBehaviour
         }
 
         //destroy on collision unless colliding with player
-        if (!other.CompareTag("Player"))
+        if (!other.CompareTag("Player") && !other.CompareTag("HealthPickup"))
         {
             DestroyElectroBall();
         }
