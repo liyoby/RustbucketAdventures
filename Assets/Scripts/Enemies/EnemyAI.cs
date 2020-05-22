@@ -73,9 +73,9 @@ public class EnemyAI : MonoBehaviour
         //The moment the enemy can "see" the player, trigger enemy chase
         if(spotPlayer == true)
         {
-            anim.SetTrigger("InRange");
             //Chase the player
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            anim.SetTrigger("InRange");
         }
     }
 
