@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
 
     void Awake()
     {
-        enemy = GetComponent<EnemyStats>();
+        enemy = GameObject.FindObjectOfType<EnemyStats>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -30,9 +30,11 @@ public class EnemyAI : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
         anim = gameObject.GetComponent<Animator>();
 
+            InvokeRepeating("patrol", 0f, 1f); //Method Name, Time Float, repeatRate     
+        
         if (enemy.health > 0)
         {
-            InvokeRepeating("patrol", 0f, 1f); //Method Name, Time Float, repeatRate     
+            stopPatrol();
         }
     }
 
@@ -95,6 +97,9 @@ public class EnemyAI : MonoBehaviour
 
     }
 
-
+    void stopPatrol()
+    {
+        CancelInvoke("patrol");
+    }
 
 }
