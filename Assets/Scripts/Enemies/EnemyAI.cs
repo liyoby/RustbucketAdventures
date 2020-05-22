@@ -17,14 +17,15 @@ public class EnemyAI : MonoBehaviour
     public Transform eyes,          //Assign gameObjs to these variables for manipulation
                      eyeRange;
 
-
     void Awake()
     {
+
         rb = GetComponent<Rigidbody2D>();
     }
 
     void Start()
     {
+
         target = GameObject.FindGameObjectWithTag("Player").transform;
         anim = gameObject.GetComponent<Animator>();
 
