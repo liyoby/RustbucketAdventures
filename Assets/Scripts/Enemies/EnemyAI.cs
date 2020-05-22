@@ -30,12 +30,9 @@ public class EnemyAI : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
         anim = gameObject.GetComponent<Animator>();
 
-            InvokeRepeating("patrol", 0f, 1f); //Method Name, Time Float, repeatRate     
+        InvokeRepeating("patrol", 0f, 1f); //Method Name, Time Float, repeatRate     
         
-        if (enemy.health > 0)
-        {
-            stopPatrol();
-        }
+
     }
 
     void Update()
@@ -43,7 +40,10 @@ public class EnemyAI : MonoBehaviour
         sensePlayer();      //Function Sense Player in range
         playerAbove();      //Check if player landed on spikes on enemy head
         chase();            //Chase player when sensePlayer is true
-
+        if (enemy.health <= 0)
+        {
+            stopPatrol();
+        }
     }
 
     public bool sensePlayer()
@@ -97,7 +97,7 @@ public class EnemyAI : MonoBehaviour
 
     }
 
-    void stopPatrol()
+    public void stopPatrol()
     {
         CancelInvoke("patrol");
     }
