@@ -6,13 +6,28 @@ using UnityEngine;
 
 public class BreakerBox : MonoBehaviour
 {
+    public SpriteRenderer spriteRend;
+    public Sprite onSprite;
+    public Sprite offSprite;
 
-    public bool powered = false;
+    void start()
+    {
+        spriteRend = GetComponent<SpriteRenderer>();
+        spriteRend.sprite = offSprite;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (MetalGrateMovement.isPowered == true)
+        {
+            spriteRend.sprite = onSprite;
+        }
+
+        else
+        {
+            spriteRend.sprite = offSprite;
+        }
     }
     
 
@@ -25,6 +40,7 @@ public class BreakerBox : MonoBehaviour
                 FindObjectOfType<AudioManager>().PlaySound("PowerSwitch");
                 MetalGrateMovement.isPowered = true;
             }
+
         }
 
     }

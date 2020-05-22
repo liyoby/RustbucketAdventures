@@ -202,7 +202,7 @@ public class PlayerMagnetism : MonoBehaviour
         }
     }
 
-    private void ResetMagnet()
+    public void ResetMagnet()
     {
         joint.enabled = false;
         isAttached = false;
@@ -220,7 +220,10 @@ public class PlayerMagnetism : MonoBehaviour
 
     public void RefillSound()
     {
-        audioManager.PlaySound("MagnetRecharge");
+        if (currentMagnetCharge < maxMagnetCharge)
+        {
+            audioManager.PlaySound("MagnetRecharge");
+        }
     }
     public void RefillCharge()
     {

@@ -132,6 +132,9 @@ public class PlayerController : MonoBehaviour
             //anim.SetTrigger("Jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
+            //allows player to jump out of magnetism
+            plMag.ResetMagnet();
+
             if(CheckGround() == true)
             {
                 //currently causes collision bug
