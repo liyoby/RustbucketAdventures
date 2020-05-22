@@ -43,7 +43,8 @@ public class PlayerController : MonoBehaviour
         jumpTimer = 0f;
         coyoteTimer = 0f;
         flySpeed = 50f;
-        
+        jumpTimerReset = 0.09f;
+        coyoteReset = 0.12f;
     }
 
     void FixedUpdate()

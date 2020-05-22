@@ -11,7 +11,7 @@ public class KillZone : MonoBehaviour
        
             if(other.gameObject.tag == "Player")
             {
-                PlayerHp.currentHealth = 0;
+                PlayerHp.TakeDamage(100);
             }
         
     }

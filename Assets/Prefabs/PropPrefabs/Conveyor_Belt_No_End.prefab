@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1392140125626724649}
   - component: {fileID: 2946337679399860706}
   - component: {fileID: -3914483604385969984}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Conveyor_Belt_No_End
   m_TagString: ConveyorBelt
   m_Icon: {fileID: 0}
