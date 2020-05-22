@@ -31,6 +31,7 @@ public class PlayerMagnetism : MonoBehaviour
     private float timerBtwShots;             //timer for shots
     public float shotTime;                  //timer's reset value
     public bool isPlaying;
+    public Transform gratePosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +41,7 @@ public class PlayerMagnetism : MonoBehaviour
         maxMagDistance = 30f;
         playerPosition = transform.position;
         maxMagnetCharge = 100;
-        currentMagnetCharge = maxMagnetCharge;
+        currentMagnetCharge = 0;
         spriteRend.enabled = false;
         lostCharge = 25;
         isPlaying = false;
@@ -73,6 +74,8 @@ public class PlayerMagnetism : MonoBehaviour
             //show crosshairs 
             spriteRend.enabled = true;
             //playerController.AnimateAim();
+
+            //check for magnetism sound
             if(!isPlaying)
             {
                 audioManager.AdjustVolume("Magnetism", 1f);
@@ -83,6 +86,7 @@ public class PlayerMagnetism : MonoBehaviour
 
 
         //check button release
+        //if we have charge attempt to magnetize if surface is found
         if (Input.GetButtonUp("Magnetism") && currentMagnetCharge >= 25)
         {
             //Debug.Log("Up");
@@ -94,9 +98,11 @@ public class PlayerMagnetism : MonoBehaviour
 
             var hit = Physics2D.Raycast(playerPosition, aimDirection * Vector2.right, maxMagDistance, magnetLayerMask);
 
+            
             if (hit.collider != null)
             {
                 isAttached = true;
+                gratePosition = hit.collider.transform;
 
                 if (!linePoints.Contains(hit.point))
                 {
@@ -108,14 +114,17 @@ public class PlayerMagnetism : MonoBehaviour
                 }
             }
 
+            //drops player, releases magnetism
             else
             {
-                isAttached = false;
-                joint.enabled = false;
-                lineRend.SetPosition(0, transform.position);
-                lineRend.SetPosition(1, transform.position);
-                linePoints.Clear();
+                ResetMagnet();
             }
+        }
+
+        //drops player, releases magnetism even if they dont have charge
+        else if (Input.GetButtonUp("Magnetism") && currentMagnetCharge <= 25)
+        {
+            ResetMagnet();
         }
 
         LiftOff();
@@ -193,6 +202,16 @@ public class PlayerMagnetism : MonoBehaviour
         }
     }
 
+    private void ResetMagnet()
+    {
+        joint.enabled = false;
+        isAttached = false;
+        lineRend.positionCount = 2;
+        lineRend.SetPosition(0, transform.position);
+        lineRend.SetPosition(1, transform.position);
+        linePoints.Clear();
+    }
+
     public void ShootElectricity()
     {
         audioManager.PlaySound("PlayerShoot");
@@ -205,7 +224,6 @@ public class PlayerMagnetism : MonoBehaviour
     }
     public void RefillCharge()
     {
-        //sound currently not working
         currentMagnetCharge = maxMagnetCharge;
     }
 

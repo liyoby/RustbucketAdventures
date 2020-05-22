@@ -151,6 +151,12 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void PushOff()
+    {
+        transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2f)
+                       , ForceMode2D.Impulse);
+    }
+
     public void PlayerStick()
     {
 
@@ -216,7 +222,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("MagStation"))
         {
             plMag.RefillSound();
-            plMag.currentMagnetCharge = plMag.maxMagnetCharge;
+            plMag.RefillCharge();
         }
 
         if(other.CompareTag("MetalGrates"))
