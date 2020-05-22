@@ -8,6 +8,7 @@ public class EnemyShoot : MonoBehaviour
     public float timeTweenShots;
     public float startTime;
     public Animator anim;
+    public AudioManager audioManager;
 
     public GameObject bullet;
 
@@ -16,6 +17,7 @@ public class EnemyShoot : MonoBehaviour
 
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         anim = gameObject.GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         timeTweenShots = startTime; //At start, set start time to count down from.
@@ -35,6 +37,7 @@ public class EnemyShoot : MonoBehaviour
     {
         if (timeTweenShots <= 0)
         {
+            audioManager.PlaySound("EnemyShoot");
             anim.SetBool("InRange", true);
             Instantiate(bullet, transform.position, Quaternion.identity);
             timeTweenShots = startTime;   //Reset time between shots to a set start time.

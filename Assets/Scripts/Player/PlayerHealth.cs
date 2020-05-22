@@ -92,7 +92,7 @@ public class PlayerHealth : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(currentLevel.name);
-        FindObjectOfType<AudioManager>().PlaySound("Theme");
+        audioManager.PlaySound("Theme");
     }
 
 }

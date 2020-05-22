@@ -30,7 +30,7 @@ public class PlayerMagnetism : MonoBehaviour
     public Transform magnetTip;             //where electroball spawns
     private float timerBtwShots;             //timer for shots
     public float shotTime;                  //timer's reset value
-
+    public bool isPlaying;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +43,7 @@ public class PlayerMagnetism : MonoBehaviour
         currentMagnetCharge = maxMagnetCharge;
         spriteRend.enabled = false;
         lostCharge = 25;
+        isPlaying = false;
     }
 
     // Update is called once per frame
@@ -72,7 +73,12 @@ public class PlayerMagnetism : MonoBehaviour
             //show crosshairs 
             spriteRend.enabled = true;
             //playerController.AnimateAim();
-           
+            if(!isPlaying)
+            {
+                audioManager.AdjustVolume("Magnetism", 1f);
+                audioManager.PlaySound("Magnetism");
+                isPlaying = true;
+            }
         }
 
 
@@ -80,6 +86,9 @@ public class PlayerMagnetism : MonoBehaviour
         if (Input.GetButtonUp("Magnetism") && currentMagnetCharge >= 25)
         {
             //Debug.Log("Up");
+            audioManager.AdjustVolume("Magnetism", 0.5f);
+            audioManager.StopLoop("Magnetism");
+            isPlaying = false;
             spriteRend.enabled = false;
             //playerController.AnimateShoot();
 
@@ -190,6 +199,10 @@ public class PlayerMagnetism : MonoBehaviour
         Instantiate(electroBall, magnetTip.position, magnetTip.rotation);
     }
 
+    public void RefillSound()
+    {
+        audioManager.PlaySound("MagnetRecharge");
+    }
     public void RefillCharge()
     {
         //sound currently not working

@@ -60,6 +60,17 @@ public class AudioManager : MonoBehaviour
         s.source.volume = volumeLevel;
    }
 
+    public void StopLoop(string songName)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == songName);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + songName + " not found!");
+            return;
+        }
+
+        s.source.loop = false;
+    }
     public void PlaySound(string songName)
    {
        Sound s = Array.Find(sounds, sound => sound.name == songName);

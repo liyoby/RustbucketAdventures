@@ -78,22 +78,18 @@ public class PlayerController : MonoBehaviour
 
         if(horizontalInput != 0 && CheckGround() == true)
         {
-            isRunning = true;
             anim.SetBool("isRunning", true);
-        }
-        else
-        {
-            isRunning = false;
-            anim.SetBool("isRunning", false);
-        }
-
-        if(isRunning == true)
-        {
-            audioManager.PlaySound("PlayerSteps");
+            if (!isRunning)
+            {
+                audioManager.PlaySound("PlayerSteps");
+                isRunning = true;
+            }
         }
         else
         {
             audioManager.StopSound("PlayerSteps");
+            anim.SetBool("isRunning", false);
+            isRunning = false;
         }
 
         //if player is stopped, check for bump
@@ -219,6 +215,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("MagStation"))
         {
+            plMag.RefillSound();
             plMag.currentMagnetCharge = plMag.maxMagnetCharge;
         }
 

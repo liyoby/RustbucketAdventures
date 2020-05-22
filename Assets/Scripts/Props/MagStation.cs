@@ -8,7 +8,7 @@ public class MagStation : MonoBehaviour
 
     void OnEnterTrigger2D()
     {
-        FindObjectOfType<AudioManager>().PlaySound("MagnetRecharge");
+        
         playerMag.RefillCharge();
     }
 }

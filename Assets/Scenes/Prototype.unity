@@ -13938,7 +13938,7 @@ PrefabInstance:
     - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
         type: 3}
       propertyPath: sounds.Array.size
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
         type: 3}
@@ -13978,12 +13978,12 @@ PrefabInstance:
     - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
         type: 3}
       propertyPath: sounds.Array.data[1].volume
-      value: 0
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
         type: 3}
       propertyPath: sounds.Array.data[1].pitch
-      value: 1
+      value: 0.725
       objectReference: {fileID: 0}
     - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
         type: 3}
@@ -14099,6 +14099,76 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[6].pitch
       value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
+        type: 3}
+      propertyPath: sounds.Array.data[7].name
+      value: PowerSwitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
+        type: 3}
+      propertyPath: sounds.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2eb983ac9ed70cb4a85c3241f1b3a9c7, type: 3}
+    - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
+        type: 3}
+      propertyPath: sounds.Array.data[7].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
+        type: 3}
+      propertyPath: sounds.Array.data[7].pitch
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
+        type: 3}
+      propertyPath: sounds.Array.data[8].name
+      value: Magnetism
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
+        type: 3}
+      propertyPath: sounds.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 223b46fd74826a44f9f720fc65631fcd, type: 3}
+    - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
+        type: 3}
+      propertyPath: sounds.Array.data[8].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
+        type: 3}
+      propertyPath: sounds.Array.data[8].pitch
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
+        type: 3}
+      propertyPath: sounds.Array.data[8].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
+        type: 3}
+      propertyPath: sounds.Array.data[9].name
+      value: Timer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
+        type: 3}
+      propertyPath: sounds.Array.data[9].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9d14ee62620f6194884978b72b9c1f85, type: 3}
+    - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
+        type: 3}
+      propertyPath: sounds.Array.data[9].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
+        type: 3}
+      propertyPath: sounds.Array.data[9].pitch
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
+        type: 3}
+      propertyPath: sounds.Array.data[9].loop
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5027502453631631566, guid: 548fd953f2fc2704e97d687b67560320,
         type: 3}

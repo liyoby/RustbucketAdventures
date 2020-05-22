@@ -20,7 +20,11 @@ public class BreakerBox : MonoBehaviour
     {
         if (collision.CompareTag("ElectroBall"))
         {
-            MetalGrateMovement.isPowered = true;
+            if (MetalGrateMovement.isPowered == false)
+            {
+                FindObjectOfType<AudioManager>().PlaySound("PowerSwitch");
+                MetalGrateMovement.isPowered = true;
+            }
         }
 
     }
