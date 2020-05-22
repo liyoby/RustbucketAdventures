@@ -515,7 +515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48042610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 257.79, y: -26.3, z: 0}
+  m_LocalPosition: {x: 258.73, y: -26.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 476776883}
@@ -12693,7 +12693,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843565126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 258.2, y: 138.2, z: 0}
+  m_LocalPosition: {x: 258.7, y: 138.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 476776883}
@@ -14523,7 +14523,7 @@ PrefabInstance:
     - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
         type: 3}
       propertyPath: sounds.Array.data[1].pitch
-      value: 0.725
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 5027502453631631561, guid: 548fd953f2fc2704e97d687b67560320,
         type: 3}
