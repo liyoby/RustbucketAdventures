@@ -82,17 +82,18 @@ public class EnemyAI : MonoBehaviour
     //Look back and forth when player not spotted
     void patrol()
     {
-
+        if (spotPlayer == false)
+        { 
         faceRight = !faceRight;
 
         if (faceRight == true)
         {
-            transform.eulerAngles = new Vector2(0, 0);
+             transform.eulerAngles = new Vector2(0, 0);
         }
-
-        else if (spotPlayer == false)
+        else if (!faceRight)
         {
-            transform.eulerAngles = new Vector2(0, 180);
+             transform.eulerAngles = new Vector2(0, 180);
+        }
         }
 
     }
