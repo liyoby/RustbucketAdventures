@@ -220,7 +220,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("KillZone"))
         {
-            playerHP.TakeDamage(100);
+            playerHP.currentHealth -= playerHP.currentHealth;
         }
 
         if (other.CompareTag("MagStation"))
