@@ -146,7 +146,16 @@ public class PlayerController : MonoBehaviour
                 //Debug.Log("Landed");
             }
         }
-       
+
+        if (PlayerMagnetism.isAttached == true)
+        {
+            rb.gravityScale = 0;
+        }
+        else
+        {
+            rb.gravityScale = 14;
+        }
+
     }
 
     public void BounceUp()
@@ -166,7 +175,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerStick()
     {
-
+        
     }
 
 

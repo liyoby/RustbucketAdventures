@@ -166,11 +166,11 @@ public class PlayerMagnetism : MonoBehaviour
                     if(linePoints.Count == 1)
                     {
                         magPointRb.transform.position = linePoint;
-                        if(!distanceSet)
+                        if(gratePosition != null)
                         {
-                            joint.distance = Vector2.Distance(transform.position, linePoint);
+                            joint.transform.position = gratePosition.position;
 
-                            distanceSet = true;
+                            //distanceSet = true;
                         }
                     }
 
