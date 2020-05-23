@@ -14,11 +14,13 @@ public class EnemyShoot : MonoBehaviour
 
     public Transform target;
 
+    EnemyStats enemy;
 
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
         anim = gameObject.GetComponent<Animator>();
+        enemy = GetComponent<EnemyStats>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         timeTweenShots = startTime; //At start, set start time to count down from.
     }
@@ -26,7 +28,9 @@ public class EnemyShoot : MonoBehaviour
     void Update()
     {
         if (Vector2.Distance(transform.position, target.position) < nearEnemyDistance)
-        { shootBullet(); }
+        {
+            shootBullet();
+        }
         else
         {
             anim.SetBool("InRange", false);
