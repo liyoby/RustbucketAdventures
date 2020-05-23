@@ -77,11 +77,13 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(velocity, rb.velocity.y), 
             ref currentVelocity, 0.02f);
 
-        if(horizontalInput != 0 && CheckGround() == true)
+        if (horizontalInput != 0 && CheckGround() == true)
         {
             anim.SetBool("isRunning", true);
+
             if (!isRunning)
             {
+                
                 audioManager.PlaySound("PlayerSteps");
                 isRunning = true;
             }
@@ -119,6 +121,10 @@ public class PlayerController : MonoBehaviour
         {
             jumpTimer = jumpTimerReset;
            
+            if(PlayerMagnetism.isAttached == true)
+            {
+                plMag.ResetMagnet();
+            }
             //currently causes collision bug
             //anim.SetTrigger("Crouch");
         }
@@ -132,9 +138,6 @@ public class PlayerController : MonoBehaviour
 
             //anim.SetTrigger("Jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-
-            //allows player to jump out of magnetism
-            plMag.ResetMagnet();
 
             if(CheckGround() == true)
             {

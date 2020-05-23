@@ -16,7 +16,7 @@ public class PlayerMagnetism : MonoBehaviour
     private float liftSpeed;
     private bool distanceSet;
     private float maxMagDistance;
-    private bool isAttached;
+    public static bool isAttached;
     private Vector2 playerPosition;
     private List<Vector2> linePoints = new List<Vector2>(); 
 
