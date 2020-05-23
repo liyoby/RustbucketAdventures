@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Attach to Last Room
-public class BreakerBox3 : MonoBehaviour
+
+//Do Not Attach
+
+public class BreakerBox4 : MonoBehaviour
 {
     public SpriteRenderer spriteRend;
     public Sprite onSprite;
@@ -18,7 +20,7 @@ public class BreakerBox3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MetalGrateMovement3.isPowered == true)
+        if (MetalGrateMovement4.isPowered == true)
         {
             spriteRend.sprite = onSprite;
         }
@@ -34,10 +36,10 @@ public class BreakerBox3 : MonoBehaviour
     {
         if (collision.CompareTag("ElectroBall"))
         {
-            if (MetalGrateMovement3.isPowered == false)
+            if (MetalGrateMovement4.isPowered == false)
             {
                 FindObjectOfType<AudioManager>().PlaySound("PowerSwitch");
-                MetalGrateMovement3.isPowered = true;
+                MetalGrateMovement4.isPowered = true;
             }
 
         }

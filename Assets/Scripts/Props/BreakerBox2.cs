@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Attach to second BreakerBox in Rustbucket's path
 public class BreakerBox2 : MonoBehaviour
 {
     public SpriteRenderer spriteRend;

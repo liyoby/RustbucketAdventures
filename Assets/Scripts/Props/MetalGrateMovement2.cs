@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Attach to PathOne (2)
 public class MetalGrateMovement2 : MonoBehaviour
 {
 
