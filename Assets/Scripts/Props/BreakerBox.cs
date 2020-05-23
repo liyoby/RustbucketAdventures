@@ -33,6 +33,7 @@ public class BreakerBox : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.CompareTag("ElectroBall"))
         {
             if (MetalGrateMovement.isPowered == false)
@@ -44,4 +45,5 @@ public class BreakerBox : MonoBehaviour
         }
 
     }
+
 }

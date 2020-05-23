@@ -8,17 +8,14 @@ public class MetalGrateMovement : MonoBehaviour
     public float timeTweenGrates;
     public float startTime;
 
-    public string BreakBoxTag;
 
     public static bool isPowered;
 
     public GameObject grate;
-    GameObject bBox;
 
     void Start()
     {
         isPowered = false;
-        bBox = GameObject.FindGameObjectWithTag(BreakBoxTag);
         timeTweenGrates = startTime; //At start, set start time to count down from.
     }
 

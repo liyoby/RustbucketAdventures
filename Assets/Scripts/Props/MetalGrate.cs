@@ -38,7 +38,7 @@ public class MetalGrate : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag(pathTag))
         {
             destroyGrate();
         }
