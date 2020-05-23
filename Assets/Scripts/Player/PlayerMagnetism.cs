@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerMagnetism : MonoBehaviour
 {
+    public MagAnimation magAnim;
+    public MagAnimation magAnim2;
     public GameObject magPoint;
     public DistanceJoint2D joint;
     public LayerMask magnetLayerMask;
@@ -220,8 +222,11 @@ public class PlayerMagnetism : MonoBehaviour
 
     public void RefillSound()
     {
+
         if (currentMagnetCharge < maxMagnetCharge)
         {
+            magAnim.WasTouched();
+            magAnim2.WasTouched();
             audioManager.PlaySound("MagnetRecharge");
         }
     }
